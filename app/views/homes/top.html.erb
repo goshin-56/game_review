@@ -1,0 +1,11 @@
+<h1>Homes#top</h1>
+
+<%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
+
+<h2>顧客</h2>
+<%= link_to "sign_up", new_customer_registration_path %><br>
+<%= link_to "sign_in", new_customer_session_path %><br>
+<%= link_to "sign_out", destroy_customer_session_path, method: :delete %>
+
+<h2>管理者</h2>
+<%= link_to "sign_in", new_admin_session_path %>
