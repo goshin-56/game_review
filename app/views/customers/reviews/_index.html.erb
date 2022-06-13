@@ -1,6 +1,17 @@
-<div>
-  <% @reviews.each do |review| %>
-    <%= review.title %>
-    <%= review.body %>
-  <% end %>
-</div>
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th>タイトル</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= link_to review.title, customers_review_path(review.id) %></td>
+        <%#= review.body %>
+        <td><%= link_to "削除", customers_review_path(review.id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,9 @@
-<div class="col">
+<div class="col-3">
   <h2>投稿</h2>
-  <%= render "postform", review: @review %>
+  <%= render "postform", {review: @review, url: customers_reviews_path } %>
+</div>
 
+<div class="col-8 offset-1">
   <h2>一覧</h2>
   <%= render "index", reviews: @reviews %>
 </div>
