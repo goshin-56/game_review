@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand" href="/"><h1>GAME_REVIEW</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <% if customer_signed_in? %>
+            <li><strong><%= link_to "ゲーム一覧", public_games_path, class:"nav-link" %></strong></li>
+            <li><strong><%= link_to "ユーザー一覧", public_games_path, class:"nav-link" %></strong></li>
+            <li><strong><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link" %></strong></li>
+          <% elsif admin_signed_in? %>
+            <li><strong><%= link_to "adminログアウト", destroy_admin_session_path, method: :delete, class:"nav-link" %></strong></li>
+          <% else %>
+            <li><strong><%= link_to "about", homes_about_path, class:"nav-link" %></strong></li>
+            <li><strong><%= link_to "新規登録", new_customer_registration_path, class:"nav-link" %></strong></li>
+            <li><strong><%= link_to "ログイン", new_customer_session_path, class:"nav-link" %></strong></li>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

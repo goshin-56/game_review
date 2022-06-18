@@ -1,0 +1,19 @@
+<div class="col">
+    <table class="table">
+        <tr>
+            <th><h1>show</h1></th>
+        </tr>
+        <tr>
+            <th class="text-left">タイトル<%= @review.title %></th>
+        </tr>
+        <tr>
+            <th>ジャンルタグ</th>
+        </tr>
+        <tr>
+            <th><%= @review.body %></th>
+        </tr>
+        <tr>
+            <th><%= link_to "編集", edit_public_review_path(@review.id) %></th>
+        </tr>
+    </table>
+</div>

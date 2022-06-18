@@ -1,0 +1,41 @@
+<h1>admin-index</h1>
+<div class="col">
+  <%= form_with model:@game, url: admin_games_path do |f| %>
+    <div>
+      <h3>画像</h3>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <div>
+      <h3>タイトル</h3>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <h3>人数</h3>
+        <%= f.radio_button :player, Game.players.key(0) %>一人用
+        <%= f.radio_button :player, Game.players.key(1) %>二人用
+        <%= f.radio_button :player, Game.players.key(2) %>三人用
+        <%= f.radio_button :player, Game.players.key(3) %>四人用
+    </div>
+    <div>
+      <h3>ジャンル</h3>
+      <%= f.radio_button :genre, Game.genres.key(0) %>音楽<br>
+      <%= f.radio_button :genre, Game.genres.key(1) %>ロールプレイング<br>
+      <%= f.radio_button :genre, Game.genres.key(2) %>アクション<br>
+      <%= f.radio_button :genre, Game.genres.key(3) %>テーブル<br>
+      <%= f.radio_button :genre, Game.genres.key(4) %>パズル<br>
+      <%= f.radio_button :genre, Game.genres.key(5) %>シューティング<br>
+    </div>
+    <%= f.submit "新規登録" %>
+  <% end %>
+</div>
+
+<div class="col">
+  <% @games.each do |game| %>
+    <%= game.title %>
+    <%= game.player %>
+    <%= game.genre %>
+  <% end %>
+</div>
+
+
+
