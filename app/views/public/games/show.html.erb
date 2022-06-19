@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-3 offset-1">
+    <div class="col-3">
       <div>
         <div class="d-flex justify-content-center">
           <%= image_tag @game.get_image, size: "200x200" %>
@@ -16,19 +16,21 @@
           <h4><%= @game.genre %></h4>
         </div>
         <div class="d-flex justify-content-center pt-5">
-          <button class="btn btn-primary "><%= link_to "レビュー投稿", new_public_game_review_path(game_id:@game.id) %></button>
+          <button class="btn btn-primary"><%= link_to "レビュー投稿", new_public_game_review_path(game_id:@game.id), class:"text-light" %></button>
         </div>
       </div>
     </div>
-    <div class="col-8">
-      <h2 class="title text-left">
+    <div class="col-9">
+      <h2 class="title text-left pb-3">
         <strong>
           <%= @game.title %>
         </strong>
       </h2>
       <% @reviews.each do |review| %>
-        <%= review.title %>
-        <%= review.body %>
+        <div class="card">
+          <h5 class="card-header"><%= review.title %></h5>
+        </div>
+        <button class="btn btn-primary "><%= link_to "レビュー詳細", public_game_review_path(game_id:@game.id), class:"text-light" %></button>
       <% end %>
     </div>
   </div>

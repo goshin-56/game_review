@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   namespace :public do
     resources :customers
     resources :games do
-      resources :reviews
+      resources :reviews do
+        resources :comments
+      end
     end
   end
 

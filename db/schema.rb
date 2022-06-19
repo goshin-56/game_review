@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_18_072257) do
+ActiveRecord::Schema.define(version: 2022_06_19_150913) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2022_06_18_072257) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment_body", limit: 4294967295
+    t.integer "review_id"
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "nick_name", null: false
     t.string "email", default: "", null: false
@@ -75,7 +83,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_072257) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.text "body"
+    t.text "body", limit: 4294967295
     t.integer "game_id"
     t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false

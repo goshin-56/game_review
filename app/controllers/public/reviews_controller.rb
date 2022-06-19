@@ -12,7 +12,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    #@comments = @review.comments
+    @game = Game.find(params[:game_id])
+    @review = Review.find(params[:id])
+    @comments = @review.comments
+    @comment = current_customer.comments.new
+
   end
 
   def edit

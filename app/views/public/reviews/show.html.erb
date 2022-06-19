@@ -1,19 +1,16 @@
-<div class="col">
-    <table class="table">
-        <tr>
-            <th><h1>show</h1></th>
-        </tr>
-        <tr>
-            <th class="text-left">タイトル<%= @review.title %></th>
-        </tr>
-        <tr>
-            <th>ジャンルタグ</th>
-        </tr>
-        <tr>
-            <th><%= @review.body %></th>
-        </tr>
-        <tr>
-            <th><%= link_to "編集", edit_public_review_path(@review.id) %></th>
-        </tr>
-    </table>
-</div>
+<h1>レビュー詳細</h1>
+    <div class="card">
+        <h5 class="card-header"><%= @review.title %></h5>
+        <div class="card-body">
+            <p class="card-text"><%= @review.body %></p>
+        </div>
+    </div>
+    <%= form_with model:[@review, @comment], url:public_game_review_comments_path(game_id:@game.id, review_id:@review.id) do |f| %>
+        <%= f.text_area :comment_body %>
+        <%= f.submit 'コメントする' %>
+    <% end %>
+    <% @comments.each do |comment| %>
+        <div>
+            <h5><%= comment.comment_body %></h5>
+        </div>
+    <% end %>
