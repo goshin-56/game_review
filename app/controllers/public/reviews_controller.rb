@@ -1,20 +1,17 @@
 class Public::ReviewsController < ApplicationController
-  def create
-    @review = Review.new(review_params)
-    if @review.save
-      redirect_to public_review_path(@review.id)
-    else
-      @reviews = Reviews.all
-      render "index"
-    end
+  def new
+    @review = Review.new
+    @game = Game.find(params[:game_id])
   end
 
-  def index
-
+  def create
+    @game = Game.find(params[:game_id])
+    @review = current_customer.reviews.new(review_params)
+    @review.save
+    redirect_to public_game_path(@game)
   end
 
   def show
-
     #@comments = @review.comments
   end
 
@@ -39,7 +36,6 @@ class Public::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:title, :body)
+    params.require(:review).permit(:title, :body, :game_id)
   end
-
 end

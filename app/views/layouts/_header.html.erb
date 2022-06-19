@@ -10,7 +10,6 @@
         <li class="nav-item active">
           <% if customer_signed_in? %>
             <li><strong><%= link_to "ゲーム一覧", public_games_path, class:"nav-link" %></strong></li>
-            <li><strong><%= link_to "ユーザー一覧", public_games_path, class:"nav-link" %></strong></li>
             <li><strong><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link" %></strong></li>
           <% elsif admin_signed_in? %>
             <li><strong><%= link_to "adminログアウト", destroy_admin_session_path, method: :delete, class:"nav-link" %></strong></li>

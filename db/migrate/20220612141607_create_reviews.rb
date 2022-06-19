@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :body
       t.integer :game_id
+      t.integer :customer_id
 
       t.timestamps
     end

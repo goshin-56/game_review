@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_072257) do
     t.string "title"
     t.text "body"
     t.integer "game_id"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
