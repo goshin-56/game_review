@@ -1,6 +1,8 @@
 class Public::CommentsController < ApplicationController
   def create
+    @review = Review.find(params[:review_id])
     @comment = current_customer.comments.new(comment_params)
+    @comment.review_id = params[:review_id]
     if @comment.save
       redirect_back(fallback_location: root_path)
     else
@@ -13,6 +15,6 @@ class Public::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment_body, :review_id)
+    params.require(:comment).permit(:comment_body)
   end
 end

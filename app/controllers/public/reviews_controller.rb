@@ -7,6 +7,7 @@ class Public::ReviewsController < ApplicationController
   def create
     @game = Game.find(params[:game_id])
     @review = current_customer.reviews.new(review_params)
+    @review.game_id = params[:game_id]
     @review.save
     redirect_to public_game_path(@game)
   end
@@ -16,7 +17,6 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @comments = @review.comments
     @comment = current_customer.comments.new
-
   end
 
   def edit
