@@ -1,17 +1,72 @@
-<h1>レビュー詳細</h1>
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">コメントフォーム</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model:[@review, @comment], url:public_game_review_comments_path(game_id:@game.id, review_id:@review.id) do |f| %>
+            <%= f.hidden_field :review_id, value: @review.id %>
+                <%= f.text_area :comment_body, class:"form-control" %>
+      </div>
+      <div class="modal-footer">
+            <%= f.submit 'コメントする', class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+    <div class="pt-2">
+        <strong>
+            <%= link_to "ゲームレビューに戻る", public_game_path(@game.id) %>
+        </strong>
+    </div>
+    <div class="row justify-content-center pb-3">
+        <h1><strong>レビュー詳細</strong></h1>
+    </div>
     <div class="card">
-        <h5 class="card-header"><%= @review.title %></h5>
+        <h5 class="card-header d-flex justify-content-between"><%= @review.title %></h5>
         <div class="card-body">
             <p class="card-text"><%= @review.body %></p>
         </div>
-    </div>
-    <%= form_with model:[@review, @comment], url:public_game_review_comments_path(game_id:@game.id, review_id:@review.id) do |f| %>
-        <%= f.hidden_field :review_id, value: @review.id %>
-        <%= f.text_area :comment_body %>
-        <%= f.submit 'コメントする' %>
-    <% end %>
-    <% @comments.each do |comment| %>
-        <div>
-            <h5><%= comment.comment_body %></h5>
+        <div class="card-footer py-2 d-flex justify-content-end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" id="nicebutton">
+                    <%= render "public/reviews/nice", review: @review, nice: @review.nices.find_by(customer_id: current_customer.id) %>
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">コメントする</button>
+            </div>
         </div>
-    <% end %>
+
+    </div>
+    <div class="row justify-content-center pt-4">
+        <table class="table col-10">
+            <thead>
+                <tr>
+                    <th class="col-2">ユーザー</th>
+                    <th>コメント</th>
+                </tr>
+            </thead>
+            <% @comments.each do |comment| %>
+                <tbody>
+                    <tr>
+                        <th><%= comment.customer.nick_name %></th>
+                        <th><%= comment.comment_body %></th>
+                    </tr>
+                </tbody>
+            <% end %>
+        </table>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
+    </div>
+</div>
+
+
+
+

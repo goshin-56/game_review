@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :reviews
   has_many :comments
+  has_many :nices
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|

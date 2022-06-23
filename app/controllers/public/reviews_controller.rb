@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @review = Review.find(params[:id])
-    @comments = @review.comments
+    @comments = @review.comments.page(params[:page]).per(10)
     @comment = current_customer.comments.new
   end
 

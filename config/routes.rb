@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :games do
       resources :reviews do
         resources :comments
+        resources :nices
       end
     end
   end

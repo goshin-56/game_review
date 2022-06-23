@@ -4,6 +4,8 @@ class Game < ApplicationRecord
 
   has_one_attached :image
   has_many :reviews
+  #has_many :comments
+  #has_many :nices
 
   def get_image
     unless image.attached?

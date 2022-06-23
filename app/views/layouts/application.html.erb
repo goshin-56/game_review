@@ -19,7 +19,9 @@
     </div>
     <script type="text/javascript">
       $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+        if ($('[data-toggle="tooltip"]')) {
+          // $('[data-toggle="tooltip"]').tooltip();
+        }
       });
     </script>
   </body>
