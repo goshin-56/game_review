@@ -19,8 +19,8 @@ class Admin::GamesController < ApplicationController
   end
 
   def update
-    @game = Game.new(game_params)
-    @game.save
+    @game = Game.find(params[:id])
+    @game.update(game_params)
       redirect_to admin_game_path(@game.id)
   end
 
