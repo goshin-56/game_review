@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :image, presence: true
+  #validates :image, presence: true
 
   has_many :reviews
   has_many :comments
