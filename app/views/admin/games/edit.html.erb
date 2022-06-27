@@ -1,12 +1,14 @@
 <div class="col-10 offset-1">
-  <div class="row justify-content-center">
-    <h1 class="py-2"><strong>ゲーム登録・一覧</strong></h1>
+  <div class="pt-2">
+    <strong>
+      <%= link_to "ゲーム詳細に戻る", admin_game_path(@game.id) %>
+    </strong>
   </div>
-</div>
-
-<div class="col-4">
-   <div class="row justify-content-center">
-    <%= form_with model:@game, url: admin_games_path do |f| %>
+  <div class="row justify-content-center">
+    <h1 class="py-2"><strong>ゲーム情報編集</strong></h1>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with model:@game, url: admin_game_path do |f| %>
       <div>
         <h3>画像</h3>
         <%= f.file_field :image, accept: "image/*" %>
@@ -31,28 +33,7 @@
         <%= f.radio_button :genre, Game.genres.key(4) %>パズル<br>
         <%= f.radio_button :genre, Game.genres.key(5) %>シューティング<br>
       </div>
-      <%= f.submit "新規登録" %>
+      <%= f.submit "更新する" %>
     <% end %>
   </div>
 </div>
-
-
-<div class="col-7">
-  <% @games.each do |game| %>
-    <div class="card">
-      <div class="card-body">
-        <%= link_to game.title, admin_game_path(game.id) %>
-        <%= game.player %>
-        <%= game.genre %>
-      </div>
-    </div>
-  <% end %>
-  <div class="row justify-content-center py-5">
-    <%= paginate @games, theme: 'twitter-bootstrap-4' %>
-  </div>
-</div>
-
-
-
-
-

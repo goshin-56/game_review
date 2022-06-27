@@ -1,4 +1,32 @@
-<h1>index</h1>
-<%= @customers.each do |customer| %>
-  <%= link_to "show", public_customer_path(customer.id) %>
-<% end %>
+<div class="col-10 offset-1">
+  <div class="row justify-content-center">
+    <h1>会員一覧</h1>
+  </div>
+  <div class="card-deck">
+    <% @customers.each do |customer| %>
+      <div class="col-md-3 px-0 pb-4">
+        <div class="card">
+          <div>
+            <%#= image_tag customer.get_image, size: "200x200", class:"card-img-top" %>
+          </div>
+          <div class="card-header py-0 px-0">
+            <h5 class="title text-center">
+              <strong>
+                <div>
+                  <%= customer.nick_name.truncate(14) %>
+                </div>
+              </strong>
+            </h5>
+          </div>
+          <div class="card-body px-0 py-0 text-center">
+            <%= link_to "show", public_customer_path(customer.id) %><br>
+            <%#= link_to "edit", edit_public_customer_path(customer.id) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

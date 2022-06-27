@@ -8,8 +8,11 @@ class Public::ReviewsController < ApplicationController
     @game = Game.find(params[:game_id])
     @review = current_customer.reviews.new(review_params)
     @review.game_id = params[:game_id]
-    @review.save
-    redirect_to public_game_path(@game)
+    if @review.save
+      redirect_to public_game_path(@game)
+    else
+      render "new"
+    end
   end
 
   def show

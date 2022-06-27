@@ -1,11 +1,18 @@
-<h1>Homes#top</h1>
+<div class="col-10 offset-1">
+  <div class="row justify-content-center py-3">
+    <h1><strong>GAME_REVIEWへようこそ</strong></h1>
+  </div>
+  <div class="row justify-content-center py-3">
+    <span class="text-center">
+      <%= link_to 'ゲストログイン', public_guest_sign_in_path, method: :post, class:"btn btn-primary btn-block" %><br>
+      <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-primary btn-block" %><br>
+      <%= link_to "ログイン", new_customer_session_path, class:"btn btn-primary btn-block" %>
+    </span>
+  </div>
+</div>
 
-<%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
 
-<h2>顧客</h2>
-<%= link_to "sign_up", new_customer_registration_path %><br>
-<%= link_to "sign_in", new_customer_session_path %><br>
-<%= link_to "sign_out", destroy_customer_session_path, method: :delete %>
 
-<h2>管理者</h2>
-<%= link_to "sign_in", new_admin_session_path %>
+
+
+

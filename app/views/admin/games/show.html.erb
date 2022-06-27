@@ -1,0 +1,22 @@
+<div class="col-10 offset-1">
+  <div class="pt-2">
+    <strong>
+      <%= link_to "ゲーム登録・一覧に戻る", admin_games_path %>
+    </strong>
+  </div>
+  <div class="row justify-content-center">
+    <h1 class="py-2"><strong>ゲーム詳細</strong></h1>
+  </div>
+  <div class="row justify-content-center">
+    <%= image_tag @game.get_image, size: "300x300" %>
+    <h3>
+      <%= @game.title %><br>
+      <%= @game.player %><br>
+      <%= @game.genre %>
+    </h3>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集画面へ", edit_admin_game_path %>
+  </div>
+</div>
+

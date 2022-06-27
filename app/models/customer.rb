@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :image, presence: true
+
   has_many :reviews
   has_many :comments
   has_many :nices
@@ -15,5 +17,13 @@ class Customer < ApplicationRecord
       customer.id = 999
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
+  end
+
+  def get_image
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    image
   end
 end

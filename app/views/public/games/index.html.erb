@@ -1,10 +1,18 @@
 <div class="col-10 offset-1">
   <div class="row justify-content-center">
-    <h1 class="py-4"><strong>ゲーム一覧</strong></h1>
+    <h1 class="py-2"><strong>ゲーム一覧</strong></h1>
+  </div>
+  <div class="row justify-content-center pb-5">
+    <%= form_with(url: public_games_path, method: :get) do |f| %>
+      <%= f.text_field :search %>
+      <%= f.select :player, options_for_select(Game.players)%>
+      <%= f.select :genre, options_for_select(Game.genres)%>
+      <%= submit_tag '検索する' %>
+    <% end %>
   </div>
   <div class="card-deck">
     <% @games.each do |game| %>
-      <div class="col-3 px-0 pb-4">
+      <div class="col-md-3 px-0 pb-4">
         <div class="card">
           <div>
             <%= image_tag game.get_image, size: "200x200", class:"card-img-top" %>

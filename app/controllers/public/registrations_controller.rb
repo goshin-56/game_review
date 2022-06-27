@@ -7,7 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_in_path_for(resource)
-    public_reviews_path
+    public_games_path
   end
 
   def configure_sign_up_params

@@ -5,6 +5,8 @@ class Review < ApplicationRecord
   has_many :comments
   has_many :nices
 
+  validates :title, {length:{maximum:20}}
+
   # niceされていればtrue, それ以外はfalse
   # n+1問題に対応していないので注意。
   def nice_by?(customer)
