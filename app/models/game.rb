@@ -3,13 +3,12 @@ class Game < ApplicationRecord
   enum genre: { 音楽:0, ロールプレイング:1, アクション:2, テーブル:3, パズル:4, シューティング:5 }
 
   has_one_attached :image
-  has_many :reviews
-  #has_many :comments
-  #has_many :nices
+  has_many :reviews, dependent: :destroy
 
-  def self.search(search, player, genre) #self.はUser.を意味する
+
+  def self.search(search, player, genre)
     if search
-       where(['title LIKE ?', "%#{search}%"]).where(player: player).where(genre: genre) #検索とuseanameの部分一致を表す。
+       where(['title LIKE ?', "%#{search}%"]).where(player: player).where(genre: genre)
     else
        all #全て表示させる
     end

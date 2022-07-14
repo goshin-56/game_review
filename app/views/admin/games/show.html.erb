@@ -18,5 +18,8 @@
   <div class="row justify-content-center">
     <%= link_to "編集画面へ", edit_admin_game_path %>
   </div>
+  <div class="row justify-content-center pt-5">
+    <%= link_to "削除", admin_game_path(@game.id), method: :delete, class:"btn btn-danger" %>
+  </div>
 </div>
 

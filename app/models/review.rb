@@ -8,7 +8,6 @@ class Review < ApplicationRecord
   validates :title, {length:{maximum:20}}
 
   # niceされていればtrue, それ以外はfalse
-  # n+1問題に対応していないので注意。
   def nice_by?(customer)
     customer_ids = nices.map {|nice| nice.customer.id }
     customer_ids.include?(customer.id)
