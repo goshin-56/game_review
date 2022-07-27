@@ -36,9 +36,10 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+    @game = Game.find(params[:game_id])
     @review = Review.find(params[:id])
     @review.destroy
-      redirect_to public_reviews_path
+      redirect_to public_game_path(@game.id)
   end
 
   private

@@ -2,8 +2,8 @@ class Review < ApplicationRecord
   has_one_attached :image
   belongs_to :game
   belongs_to :customer
-  has_many :comments
-  has_many :nices
+  has_many :comments, dependent: :destroy
+  has_many :nices, dependent: :destroy
 
   validates :title, {length:{maximum:20}}
 
