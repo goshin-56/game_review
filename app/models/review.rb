@@ -5,7 +5,8 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :nices, dependent: :destroy
 
-  validates :title, {length:{maximum:20}}
+  validates :title, {presence: true, length:{maximum:20}}
+  validates :body, presence: true
 
   # niceされていればtrue, それ以外はfalse
   def nice_by?(customer)

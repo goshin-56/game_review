@@ -52,6 +52,16 @@
                 <div><%= comment.customer.nick_name %></div>
                 <div class="card-text"><%= comment.comment_body %></div>
             </div>
+            <div class="card-footer py-1">
+                <div class="d-flex justify-content-between">
+                    投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %>
+                    <% if comment.customer == current_customer %>
+                        <button class="btn btn-danger py-0">
+                            <%= link_to "削除", public_game_review_comment_path(game_id:@game.id, review_id:@review.id, id:comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"text-light" %>
+                        </button>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     </div>
     <div class="row justify-content-center py-5">

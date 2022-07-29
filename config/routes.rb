@@ -3,17 +3,17 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   namespace :public do
-    resources :customers
-    resources :games do
-      resources :reviews do
-        resources :comments
-        resources :nices
+    resources :customers, only: [:index,:show]
+    resources :games, only: [:index,:show] do
+      resources :reviews, only: [:new,:create,:show,:edit,:update,:destroy] do
+        resources :comments, only: [:create,:destroy]
+        resources :nices, only: [:create,:destroy]
       end
     end
   end
 
   namespace :admin do
-    resources :games
+    resources :games, only: [:index,:create,:show,:edit,:update,:destroy]
   end
 
   devise_scope :customer do

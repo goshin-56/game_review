@@ -2,7 +2,6 @@ class Public::NicesController < ApplicationController
   def create
     @review = Review.find(params[:review_id])
     @nice = current_customer.nices.build(review_id: params[:review_id])
-    #byebug
     @nice.save
   end
 
