@@ -14,8 +14,8 @@
     <% @games.each do |game| %>
       <div class="col-md-3 px-0 pb-4">
         <div class="card">
-          <div>
-            <%= image_tag game.get_image, size: "200x200", class:"card-img-top" %>
+          <div class="image_div">
+            <%= image_tag game.get_image, class: "card-img-top image-index" %>
           </div>
           <div class="card-header py-0 px-0">
             <h5 class="title text-center">
