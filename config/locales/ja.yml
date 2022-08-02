@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              blank: "空になっています。入力してください。"
+            password:
+              blank: "空になっています。入力してください。"
+  errors:
+    messages:
+      not_saved: '登録できません'
