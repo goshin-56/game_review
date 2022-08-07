@@ -6,7 +6,7 @@
 
 <div class="col-4">
    <div class="row justify-content-center">
-    <%= form_with model:@game, url: admin_games_path do |f| %>
+    <%= form_with model: @game, url: admin_games_path do |f| %>
       <div>
         <h3>画像</h3>
         <%= f.file_field :image, accept: "image/*" %>

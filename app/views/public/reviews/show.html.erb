@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with model:[@review, @comment], url:public_game_review_comments_path(game_id:@game.id, review_id:@review.id) do |f| %>
+        <%= form_with model:[@review, @comment], url: public_game_review_comments_path(game_id: @game.id, review_id: @review.id) do |f| %>
             <%= f.hidden_field :review_id, value: @review.id %>
             <%= f.text_area :comment_body, class:"form-control" %>
             <div class="d-flex justify-content-center pt-3">
@@ -57,7 +57,7 @@
                     投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %>
                     <% if comment.customer == current_customer %>
                         <button class="btn btn-danger py-0">
-                            <%= link_to "削除", public_game_review_comment_path(game_id:@game.id, review_id:@review.id, id:comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"text-light" %>
+                            <%= link_to "削除", public_game_review_comment_path(game_id: @game.id, review_id: @review.id, id:comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "text-light" %>
                         </button>
                     <% end %>
                 </div>

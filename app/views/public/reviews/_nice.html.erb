@@ -1,9 +1,9 @@
 <% if review.nice_by?(current_customer) %>
-  <%= link_to public_game_review_nice_path(review.game.id, review.id, nice.id), remote: true, method: :delete, class:"text-light" do %>
+  <%= link_to public_game_review_nice_path(review.game.id, review.id, nice.id), remote: true, method: :delete, class: "text-light" do %>
     ♥<%= review.nices.count %> いいね
   <% end %>
 <% else %>
-  <%= link_to public_game_review_nices_path(review.game.id, review.id), remote: true, method: :post, class:"text-light" do %>
+  <%= link_to public_game_review_nices_path(review.game.id, review.id), remote: true, method: :post, class: "text-light" do %>
     ♡<%= review.nices.count %> いいね
   <% end %>
 <% end %>
