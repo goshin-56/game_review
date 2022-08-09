@@ -19,19 +19,19 @@
       </div>
       <div>
         <h3>人数</h3>
-          <%= f.radio_button :player, Game.players.key(0) %>一人用
-          <%= f.radio_button :player, Game.players.key(1) %>二人用
-          <%= f.radio_button :player, Game.players.key(2) %>三人用
-          <%= f.radio_button :player, Game.players.key(3) %>四人用
+          <%= f.radio_button :player, Game.players.key(0) %><%= f.label:player,'一人用', value: Game.players.key(0) %>
+          <%= f.radio_button :player, Game.players.key(1) %><%= f.label:player,'二人用', value: Game.players.key(1) %>
+          <%= f.radio_button :player, Game.players.key(2) %><%= f.label:player,'三人用', value: Game.players.key(2) %>
+          <%= f.radio_button :player, Game.players.key(3) %><%= f.label:player,'四人用', value: Game.players.key(3) %>
       </div>
       <div>
         <h3>ジャンル</h3>
-        <%= f.radio_button :genre, Game.genres.key(0) %>音楽<br>
-        <%= f.radio_button :genre, Game.genres.key(1) %>ロールプレイング<br>
-        <%= f.radio_button :genre, Game.genres.key(2) %>アクション<br>
-        <%= f.radio_button :genre, Game.genres.key(3) %>テーブル<br>
-        <%= f.radio_button :genre, Game.genres.key(4) %>パズル<br>
-        <%= f.radio_button :genre, Game.genres.key(5) %>シューティング<br>
+        <%= f.radio_button :genre, Game.genres.key(0) %><%= f.label:genre,'音楽', value: Game.genres.key(0) %><br>
+        <%= f.radio_button :genre, Game.genres.key(1) %><%= f.label:genre,'ロールプレイング', value: Game.genres.key(1) %><br>
+        <%= f.radio_button :genre, Game.genres.key(2) %><%= f.label:genre,'アクション', value: Game.genres.key(2) %><br>
+        <%= f.radio_button :genre, Game.genres.key(3) %><%= f.label:genre,'テーブル', value: Game.genres.key(3) %><br>
+        <%= f.radio_button :genre, Game.genres.key(4) %><%= f.label:genre,'パズル', value: Game.genres.key(4) %><br>
+        <%= f.radio_button :genre, Game.genres.key(5) %><%= f.label:genre,'シューティング', value: Game.genres.key(5) %><br>
       </div>
       <%= f.submit "更新する" %>
     <% end %>
