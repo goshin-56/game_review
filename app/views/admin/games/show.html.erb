@@ -8,17 +8,19 @@
     <h1 class="py-2"><strong>ゲーム詳細</strong></h1>
   </div>
   <div class="row justify-content-center">
-    <%= image_tag @game.get_image, size: "300x300" %>
+    <div class="pr-5 mr-5">
+      <%= image_tag @game.get_image, size: "300x300"%>
+    </div>
     <h3>
       <%= @game.title %><br>
       <%= @game.player %><br>
       <%= @game.genre %>
     </h3>
   </div>
-  <div class="row justify-content-center">
-    <%= link_to "編集画面へ", edit_admin_game_path %>
-  </div>
   <div class="row justify-content-center pt-5">
+    <%= link_to "編集画面へ", edit_admin_game_path, class: "btn btn-success" %>
+  </div>
+  <div class="row justify-content-center pt-3">
     <%= link_to "削除", admin_game_path(@game.id), method: :delete, class: "btn btn-danger" %>
   </div>
 </div>
