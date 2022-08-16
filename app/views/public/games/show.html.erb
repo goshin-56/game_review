@@ -43,12 +43,15 @@
             <div class="d-flex justify-content-end align-items-center">
               <span class="pr-3">コメント数 : <%= review.comments.count %></span>
               <span class="pr-3">いいね数 : <%= review.nices.count %></span>
-                <% if review.customer == current_customer %>
-                  <button class="btn btn-danger">
-                    <%= link_to "削除", public_game_review_path(game_id: @game.id, id: review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "text-light" %>
-                  </button>
-                <% end %>
               <button class="btn btn-primary"><%= link_to "レビュー詳細へ", public_game_review_path(game_id: @game.id, id: review.id), class: "text-light" %></button>
+              <% if review.customer == current_customer %>
+                <button class="btn btn-success"><%= link_to "レビュー編集へ", edit_public_game_review_path(game_id: @game.id, id: review.id), class: "text-light" %></button>
+              <% end %>
+              <% if review.customer == current_customer %>
+                <button class="btn btn-danger">
+                  <%= link_to "削除", public_game_review_path(game_id: @game.id, id: review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "text-light" %>
+                </button>
+              <% end %>
             </div>
           </div>
         </div>
