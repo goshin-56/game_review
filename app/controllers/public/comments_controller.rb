@@ -9,6 +9,21 @@ class Public::CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:game_id])
+    @review = Review.find(params[:review_id])
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to public_game_review_path(@game.id,@review.id)
+    else
+      render "edit"
+    end
+  end
+
   def destroy
     @game = Game.find(params[:game_id])
     @review = Review.find(params[:review_id])

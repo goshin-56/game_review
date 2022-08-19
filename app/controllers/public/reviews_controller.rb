@@ -30,7 +30,7 @@ class Public::ReviewsController < ApplicationController
     @game = Game.find(params[:game_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to public_game_review_path(@game.id,@review.id)
+      redirect_to public_game_path(@game.id)
     else
       render "edit"
     end

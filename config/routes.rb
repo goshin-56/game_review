@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index,:show]
     resources :games, only: [:index,:show] do
       resources :reviews, only: [:new,:create,:show,:edit,:update,:destroy] do
-        resources :comments, only: [:create,:edit,:destroy]
+        resources :comments, only: [:create,:edit,:update,:destroy]
         resources :nices, only: [:create,:destroy]
       end
     end
